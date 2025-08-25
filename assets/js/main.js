@@ -16,7 +16,7 @@ const detailHeight = document.getElementById('detailHeight')
 const detailWeight = document.getElementById('detailWeight')
 const detailAbilities = document.getElementById('detailAbilities')
 
-// Função para exibir modal
+
 function showPokemonDetail(pokemon) {
     detailName.textContent = pokemon.name
     detailImage.src = pokemon.photo
@@ -35,7 +35,7 @@ window.onclick = (event) => {
     if(event.target == modal) modal.style.display = 'none'
 }
 
-// Função para converter cada Pokémon em li
+
 function convertPokemonToLi(pokemon) {
     return `
         <li class="pokemon ${pokemon.type}" onclick='showPokemonDetail(${JSON.stringify(pokemon)})'>
@@ -53,7 +53,7 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
-// Função para carregar os Pokémons
+
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         const newHtml = pokemons.map(convertPokemonToLi).join('')
@@ -61,10 +61,10 @@ function loadPokemonItens(offset, limit) {
     })
 }
 
-// Carregar os primeiros Pokémons
+
 loadPokemonItens(offset, limit)
 
-// Botão Load More
+
 loadMoreButton.addEventListener('click', () => {
     offset += limit
     const qtdRecordsWithNextPage = offset + limit
